@@ -34,4 +34,4 @@ while True:
     sleep(0.1)
     print("GRN led3 OFF!")
     led3.off()
-#test kommentar for synk
+#test kommentar for synk5648546564

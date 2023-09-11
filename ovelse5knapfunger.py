@@ -3,7 +3,7 @@ from time import sleep
 
 led1=Pin(26, Pin.OUT)
 pb1=Pin(4, Pin.IN)
-while True:
-    sleep (0.1)
+
+while True
     print(pb1.value())
-    #Printer helt enkelt status af PB1 ver 0.1 sekunder. Meget enkelt.
+    sleep(0.5)

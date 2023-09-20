@@ -15,8 +15,11 @@ def buzzer(buzzer_PWM_object, frequency, sound_duration, silence_duration): # De
     sleep(silence_duration)
 buzzer(pwm_buzz, 1, 0.1, 0) # Stopper Buzzer fra at spille en lav tone 24/7
 
+# Her kan i placere globale varibaler, og instanser af klasser
+
 while True:
     try:
+        # Indskriv egen kode her:
         
         if mqtt.besked == "beep!": # Hvis knap sender "beep!" så spiller vores buzzer en lille tone i 0.2 sekunder.
             print("Beep beep!")

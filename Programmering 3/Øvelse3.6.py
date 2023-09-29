@@ -1,16 +1,16 @@
-import umqtt_robust2 as mqtt
+import umqtt_robust2 as mqtt #Importerer de libraries vi behøver
 import machine, neopixel
 import time
 from machine import Pin
 from machine import PWM
 from time import sleep
 from gpio_lcd import GpioLcd
-lcd = GpioLcd(rs_pin=Pin(27), enable_pin=Pin(25),
+lcd = GpioLcd(rs_pin=Pin(27), enable_pin=Pin(25), # Definerer vores LCD så den kan bruges.
                 d4_pin=Pin(33), d5_pin=Pin(32),
                   d6_pin=Pin(21), d7_pin=Pin(22),
                     num_lines=4, num_columns=20)
 
-def hex_til_rgb(hex_farve):
+def hex_til_rgb(hex_farve): # Funktion for at omstille HEX til RGB farvekode.
     hex_farve = hex_farve.strip('#')
     rgb_liste = []
     for i in range(0, 6, 2):
@@ -35,14 +35,14 @@ def px012(r, g , b): # definition at tænde lamper 8-11
 while True:
     try:
         # Indskriv egen kode her:
-        if "#" in mqtt.besked and len(mqtt.besked) == 7:
+        if "#" in mqtt.besked and len(mqtt.besked) == 7: # En IF for at bestæmme hvis vi modtager en hex farvekode-værdi
             try:
                 rgb_tuple = hex_til_rgb(mqtt.besked)
-                print(f"RGB tuple: {rgb_tuple}\n Her kommer farven som ønskes!")
-                lcd.putstr("Din farvekode, omvandlet!")
-                px012(rgb_tuple[0], rgb_tuple[1], rgb_tuple[2])
+                print(f"RGB tuple: {rgb_tuple}\n Her kommer farven som ønskes!") #Printer den i RGB
+                lcd.putstr("Din farvekode, omvandlet!") #Siger omvandling er færdig
+                px012(rgb_tuple[0], rgb_tuple[1], rgb_tuple[2]) #Bruger den omvandlede farvekode for at skifte farve
             except:
-                print("Du har gjort det forkert!") 
+                print("Du har gjort det forkert!")  #Hvis noget er forkert i farvekoden
             
         if len(mqtt.besked) != 0: # Her nulstilles indkommende beskeder
             mqtt.besked = ""

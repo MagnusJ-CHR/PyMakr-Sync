@@ -1,5 +1,5 @@
 #3.1
-from neopixel import NeoPixel
+from neopixel import NeoPixel #Importerer de libraries vi behøver
 from machine import Pin
 from time import sleep
 n = 12 # Mængder pixel i ring

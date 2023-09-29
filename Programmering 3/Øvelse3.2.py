@@ -1,4 +1,4 @@
-from neopixel import NeoPixel
+from neopixel import NeoPixel #Importerer de libraries vi behøver
 from machine import Pin
 from time import sleep
 n = 12 # Mængder pixel i ring
@@ -10,7 +10,7 @@ def clear(): #For at rense al farve i alle pixel
         np[i] = (0, 0 , 0)
         np.write()
         
-def allpx(r, g , b): # for at angive en pixel værdi alle pixel ska blive
+def allpx(r, g , b): # for at angive en pixel værdi alle pixel ska bli
     for i in range(n):
         np[i] = (r, g , b)
         np.write()

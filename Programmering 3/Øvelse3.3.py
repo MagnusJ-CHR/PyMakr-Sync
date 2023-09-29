@@ -1,4 +1,4 @@
-import machine, neopixel
+import machine, neopixel #Importerer de libraries vi behøver
 import time
 
 # number of pixels
@@ -11,7 +11,7 @@ np[0] = (255, 0, 0)
 np.write()
 time.sleep(1)
 
-def fade_in_out(color, wait):
+def fade_in_out(color, wait):  #En funktion for at lave en fade in og fade out.
  for i in range(0, 4 * 256, 8):
   for j in range(n):
    if (i // 256) % 2 == 0:
@@ -36,10 +36,10 @@ def fade_in_out(color, wait):
      np.write()
   time.sleep_ms(wait)
 
-fade_in_out('red', 5)
-fade_in_out('green', 10)
-fade_in_out('blue', 25)
-fade_in_out('purple', 30)
-fade_in_out('yellow', 10)
-fade_in_out('teal', 10)
-fade_in_out('white', 10)
+fade_in_out('red', 5) #Laver en fade in og out, 5ms i rød farve
+fade_in_out('green', 10)#Laver en fade in og out, 10ms i grøn farve
+fade_in_out('blue', 25)#Laver en fade in og out, 25ms i blå farve
+fade_in_out('purple', 30)#Laver en fade in og out, 30ms i lila farve
+fade_in_out('yellow', 10)#Laver en fade in og out, 10ms i gul farve
+fade_in_out('teal', 10)#Laver en fade in og out, 10ms i blågrøn farve
+fade_in_out('white', 10)#Laver en fade in og out, 10ms i hvid farve

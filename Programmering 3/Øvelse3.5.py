@@ -33,12 +33,12 @@ np[0] = (255, 0, 0)
 np.write()
 time.sleep(1)
 
-def px012(r, g , b): # definition at tænde lamper 8-11
+def px012(r, g , b): # definition at tænde lamper 0-12 tilsammens
     for i in range(0,12):
         np[i] = (r, g , b)
         np.write()
 
-def bounce(r, g, b):
+def bounce(r, g, b): # Bounce funktion, farven hopper
     for i in range(4 * n):
         for j in range(n):
             np[j] = (r, g, b)
@@ -49,7 +49,7 @@ def bounce(r, g, b):
         np.write()
         time.sleep_ms(40)
 
-def wheel(pos):
+def wheel(pos): #Color wheel for vores regnbue at bruge
     #Indsæt fra 0-255, går fra RGB tilbage til R
     if pos < 0 or pos > 255:
         return (0,0,0)
@@ -61,7 +61,7 @@ def wheel(pos):
     pos -=170
     return (pos * 3, 0, 255 - pos * 3)
 
-def regnbue(wait):
+def regnbue(wait): # Regnbue effekt, den skifter mellem gradienter og farver som en regnbue.
     for j in range(255):
         for i in range(n):
             rc_index = (i * 256 // n) + j
@@ -73,7 +73,7 @@ regnbue(10)
 regnbue(5)
 time.sleep(1)
 
-def fade_in_out(color, wait):
+def fade_in_out(color, wait): # Fade in and out funktion, taler for sig selv
  for i in range(0, 4 * 256, 8):
   for j in range(n):
    if (i // 256) % 2 == 0:
@@ -102,19 +102,19 @@ while True:
     try:
         # Indskriv egen kode her:
         
-        if mqtt.besked == "regnbue varning!":
+        if mqtt.besked == "regnbue varning!": #Modtager den specifikke string, lav en lyd og brug regnbue effekt!
             lcd.putstr(mqtt.besked)
             buzzer(pwm_buzz, 100, 0.1, 0.4)
             wheel(180)
             regnbue(5)
             sleep(5)
             
-        if mqtt.besked == "det hopper!":
+        if mqtt.besked == "det hopper!": #Her laver vi en lyd hvis en specifik string modtages, + farven hopper.
             lcd.putstr(mqtt.besked)
             buzzer(pwm_buzz, 900, 0.5, 0.2)
             bounce(0,5,200)
         
-        if mqtt.besked == "blå":
+        if mqtt.besked == "blå": # For at skifte til den specifikke farve (Blå), så laver vi farven blå.
             lcd.putstr("her kommer blå farve!")
             px012(0,0,255)
             

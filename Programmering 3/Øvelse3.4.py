@@ -1,4 +1,4 @@
-import machine, neopixel
+import machine, neopixel #Importerer de libraries vi behøver
 import time
 from machine import Pin
 from machine import PWM
@@ -25,7 +25,7 @@ np[0] = (255, 0, 0)
 np.write()
 time.sleep(1)
 
-def bounce(r, g, b):
+def bounce(r, g, b): #Bounce funktion, farven "hopper"
     for i in range(4 * n):
         for j in range(n):
             np[j] = (r, g, b)
@@ -36,7 +36,7 @@ def bounce(r, g, b):
         np.write()
         time.sleep_ms(40)
 
-def wheel(pos):
+def wheel(pos): #Et color-wheel, for os til at bruge i vores regnbue funktion
     #Indsæt fra 0-255, går fra RGB tilbage til R
     if pos < 0 or pos > 255:
         return (0,0,0)
@@ -48,7 +48,7 @@ def wheel(pos):
     pos -=170
     return (pos * 3, 0, 255 - pos * 3)
 
-def regnbue(wait):
+def regnbue(wait): #Regnbue funktionen laver en rainbow / regnbue effekt på vores lys, hvor den skifter igennem.
     for j in range(255):
         for i in range(n):
             rc_index = (i * 256 // n) + j
@@ -60,7 +60,7 @@ regnbue(10)
 regnbue(5)
 time.sleep(1)
 
-def fade_in_out(color, wait):
+def fade_in_out(color, wait): #Fade in og Fade out, for at lave det funktionen er nævnt efter.
  for i in range(0, 4 * 256, 8):
   for j in range(n):
    if (i // 256) % 2 == 0:
@@ -85,7 +85,7 @@ def fade_in_out(color, wait):
      np.write()
   time.sleep_ms(wait)
 
-while True:
+while True: # Her spiller vi forskellige funktioner efter hver "beep!" fra vores buzzer.
     buzzer(pwm_buzz, 440, 0.2, 0.2)
     fade_in_out('red', 5)
     fade_in_out('green', 10)

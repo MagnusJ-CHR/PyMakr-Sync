@@ -14,35 +14,7 @@ n = 13 # Mængder pixel i ring
 p = 26 #Pin i NeoPixel
 np = NeoPixel(Pin(p, Pin.OUT), n) #Skabe NeoPixel instanse
 pb1 = Pin(4, Pin.IN)
-tal1 = 0
-tal2 = 1
 npswitch = 0
-
-
-def clear(): # Definere en funktion at slukke alle lamper
-    for i in range(n):
-        np[i] = (0, 0 , 0)
-        np.write()
-        
-def px012(r, g , b): # definition at tænde lamper 0-
-    for i in range(tal1,tal2):
-        np[i] = (r, g , b)
-        np.write()
-        sleep_ms(pot_val)
-        
-def px012statisk(r, g , b): # definition at tænde lamper 0-
-    for i in range(tal1,tal2):
-        np[i] = (r, g , b)
-        np.write()
-        sleep_ms(200)
-        
-def blinke():
-    px012(100,0,0)
-    clear()
-def blinkestatisk():
-    px012statisk(100,0,0)
-    clear()
-
 
 class States:
     test_state = False
@@ -52,16 +24,6 @@ class States:
 while True: # starter uendeligt while loop
     pot_val = pot.read() # Gemmer aflæsningen af ADC objektets read metode i variablen pot_val
     spaending = pot_val * (3.3 / 4096) # Udregner spændingen og gemmer i
-    ...
-    if tal2 < 13:
-        tal1 = tal1 + 1
-        tal2 = tal2 + 1
-    if tal2 == 13:
-        tal1 = 11
-        tal2 = 12
-        sleep_ms(1)
-        tal1 = 0
-        tal2 = 1
     if npswitch == 1 and States.test_state == False:
         print('Starter blinkning med variabel hastighed')
         blinke()
@@ -74,4 +36,13 @@ while True: # starter uendeligt while loop
         States.test_state = False
     if States.test_state == True:
         print('Nu kører vi fast hastighed')
+    if tal2 < 13:
+        tal1 = tal1 + 1
+        tal2 = tal2 + 1
+    if tal2 == 13:
+        tal1 = 11
+        tal2 = 12
+        sleep_ms(1)
+        tal1 = 0
+        tal2 = 1
         

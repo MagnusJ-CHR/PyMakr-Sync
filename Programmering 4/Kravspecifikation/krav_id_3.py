@@ -45,14 +45,35 @@ def blinkestatisk():
 
 
 class States:
-    test_state = False
+    test_state = 1
 
+number = 0
+print("Tryk PB1 for at tænde!")
 
 
 while True: # starter uendeligt while loop
     pot_val = pot.read() # Gemmer aflæsningen af ADC objektets read metode i variablen pot_val
     spaending = pot_val * (3.3 / 4096) # Udregner spændingen og gemmer i
-    ...
+    if pb1.value() == 0 and States.test_state == 0:
+        print("Tænder!")
+        number =  number + 1
+    if pb1.value() == 0 and States.test_state == 1:
+        number =  number + 1
+        print("State = Statisk")
+        sleep_ms(300)
+    if pb1.value() == 0 and States.test_state == 2:
+        number =  1
+        sleep_ms(300)
+        print("State = Variabel")
+    States.test_state = number
+    if 	States.test_state == 1:
+        led1.value(not led1.value())
+        npswitch = led1.value()
+        blinke()
+        
+    elif States.test_state == 2:
+        blinkestatisk()
+        
     if tal2 < 13:
         tal1 = tal1 + 1
         tal2 = tal2 + 1
@@ -62,16 +83,4 @@ while True: # starter uendeligt while loop
         sleep_ms(1)
         tal1 = 0
         tal2 = 1
-    if npswitch == 1 and States.test_state == False:
-        print('Starter blinkning med variabel hastighed')
-        blinke()
-        states.test_state = True
-    elif npswitch == 0 and States.test_state == True:
-        print('Stopper forrige state.')
-        led1.value(not led1.value())
-        npswitch = led1.value()
-        blinkestatisk()
-        States.test_state = False
-    if States.test_state == True:
-        print('Nu kører vi fast hastighed')
         

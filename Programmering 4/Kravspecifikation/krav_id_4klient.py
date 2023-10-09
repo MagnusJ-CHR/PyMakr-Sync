@@ -13,6 +13,7 @@ while True:
         client_socket.sendto(message.encode(), (server_name, server_port))
         modified_message, server_address = client_socket.recvfrom(2048)
         print(modified_message.decode())
+        
     except KeyboardInterrupt
     client_socket.close()
     exit()

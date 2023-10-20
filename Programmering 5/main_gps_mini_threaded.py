@@ -44,7 +44,6 @@ def gps_tread():
             # altitude is fixed to 0.0 as it is not included in the $GPRMC frame
             adafruit_format = str(gps.get_speed())+","+str(gps.get_latitude())+","+str(gps.get_longitude())+","+"0.0"
             gps_data["adafruit format"] = adafruit_format
-            print(gps_data,"\n")
     
         time.sleep(1)
  

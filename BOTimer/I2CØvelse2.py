@@ -2,7 +2,7 @@ from machine import I2C
 from time import sleep_ms
 
 eeprom_i2c_addr = 0x50
-eeprom_mem_address = indsat-en-adresse-her
+eeprom_mem_address = 0xA6
 
 i2c = I2C (0)
 
@@ -21,7 +21,10 @@ def read_byte (i2cAddr, addr):
 
 
 print ("EEPROM test program\n")
-write_byte(eeprom_i2c_addr, eeprom_mem_address, indset-en-verdi-her)
+write_byte(eeprom_i2c_addr, eeprom_mem_address, 0x1)
+write_byte(eeprom_i2c_addr, eeprom_mem_addressBAT, 0xA5)
 value = read_byte(eeprom_i2c_addr, eeprom_mem_address)
+valueBAT = read_byte(eeprom_i2c_addr, eeprom_mem_addressBAT)
 print(value)
+print(valueBAT)
 print("&d: %02d/Ox%02x" (eeprom_mem_address, value, value))

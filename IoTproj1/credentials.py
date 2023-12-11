@@ -11,6 +11,6 @@ credentials = {
     'password' : 'Hejsa123',
     'ADAFRUIT_IO_URL' : b'io.adafruit.com',
     'ADAFRUIT_USERNAME' : b'oqoqo',
-    'ADAFRUIT_IO_KEY' : b'aio_inAH112vrIRmb4xAKPrbeDHZnI0r',
+    'ADAFRUIT_IO_KEY' : b'aio_ytFW20Hf7KP1CdZ2f8cvbAh3tpPT',
     'ADAFRUIT_IO_FEEDNAME' : b'iotproj-1'
     }

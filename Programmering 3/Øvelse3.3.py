@@ -4,7 +4,7 @@ import time
 # number of pixels
 n = 12
 # strip control gpio
-p = 26
+p = 32
 np = neopixel.NeoPixel(machine.Pin(p), n)
 # set single pixel (1st pixel = index [0]) to red color
 np[0] = (255, 0, 0)
